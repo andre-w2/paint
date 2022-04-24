@@ -3,10 +3,11 @@ let mouse = {
    x: 0,
    y: 0,
 }
+let color = '#000'
 
 const canvas = document.querySelector('canvas')
 const cx = canvas.getContext('2d')
-cx.canvas.width = window.innerWidth / 2
+cx.canvas.width = window.innerWidth
 cx.canvas.height = window.innerHeight
 
 const start = (e) => {
@@ -23,7 +24,7 @@ const painting = (e) => {
       mouse.x = e.pageX - canvas.getBoundingClientRect().left
       mouse.y = e.pageY - canvas.getBoundingClientRect().top
 
-      cx.strokeStyle = '#000'
+      cx.strokeStyle = color
       cx.lineTo(mouse.x, mouse.y)
       cx.stroke()
    }
@@ -43,6 +44,9 @@ canvas.addEventListener('mousemove', painting)
 canvas.addEventListener('mouseup', stop)
 
 const save = document.querySelector('#save')
+const del = document.querySelector('#del')
+const pen = document.querySelector('#pen-color')
+const bg_color = document.querySelector('#bg-color')
 
 save.addEventListener('click', () => {
    const data = canvas.toDataURL('image/png')
@@ -52,8 +56,15 @@ save.addEventListener('click', () => {
    )
 })
 
-const del = document.querySelector('#del')
 
 del.addEventListener('click', () => {
    cx.clearRect(0, 0, canvas.width, canvas.height)
+})
+
+pen.addEventListener('change', e => {
+   color = e.target.value
+})
+
+bg_color.addEventListener('change', e => {
+   canvas.style.background = e.target.value
 })
