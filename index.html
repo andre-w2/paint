@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PAINT</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
-</head>
+  </head>
 
-<body class="bg-dark">
+  <body class="bg-dark">
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container-fluid">
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Переключить навигацию">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-text-indent-left" viewBox="0 0 16 16">
-                        <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                </button>
-                <div class="navbar-collapse collapse" id="navbarCollapse" style="">
-                    <ul class="text-white navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <p id="del" class="nav-link mb-0">Удалить</p>
-                        </li>
-                        <li class="nav-item">
-                            <a id="save" href="#" class="nav-link mb-0" download="image.png">Сохранить</a>
-                        </li>
-                    </ul>
-                    <ul class="text-white navbar-nav">
-                        <li class="nav-item d-flex">
-                            <p class="text-danger nav-link">Цвет кисти:</p>
-                            <input id="pen-color" type="color" class="mt-2 ms-1">
-                        </li>
-                        <li class="ms-3 nav-item d-flex">
-                            <p class="text-danger nav-link">Цвет фона:</p>
-                            <input id="bg-color" type="color" class="mt-2 ms-1">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">PAINT</a>
+          <button
+            class="navbar-toggler collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Переключить навигацию"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              fill="currentColor"
+              class="bi bi-text-indent-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+            <ul class="text-white navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <p id="del" class="nav-link mb-0">Удалить</p>
+              </li>
+              <li class="nav-item">
+                <a id="save" href="#" class="nav-link mb-0" download="image.png">Сохранить</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
+
     <div class="container d-flex justify-content-center">
-        <canvas></canvas>
+      <canvas></canvas>
     </div>
+
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
-</body>
-
+  </body>
 </html>
