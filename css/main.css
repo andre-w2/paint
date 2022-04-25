@@ -4,8 +4,34 @@
     box-sizing: border-box;
 }
 
+html, body {
+	height: 100%;
+}
+
+.b-flex {
+	height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.none {
+	display: none;
+}
+
 canvas {
     background: #fff;
     box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
     cursor: url(../img/pen.png), auto;
+    overflow: hidden;
+}
+
+input[type=file] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
