@@ -11,12 +11,14 @@ cx.canvas.width = window.innerWidth
 cx.canvas.height = window.innerHeight
 
 const start = (e) => {
+   const rect = canvas.getBoundingClientRect()
+
    if (e.touches) {
-      mouse.x = e.touches[0].pageX - canvas.getBoundingClientRect().left
-      mouse.y = e.touches[0].pageY - canvas.getBoundingClientRect().top
+      mouse.x = e.touches[0].pageX - rect.left
+      mouse.y = e.touches[0].pageY - rect.top
    } else {
-      mouse.x = e.pageX - canvas.getBoundingClientRect().left
-      mouse.y = e.pageY - canvas.getBoundingClientRect().top
+      mouse.x = e.pageX - rect.left
+      mouse.y = e.pageY - rect.top
    }
 
    draw = true
@@ -26,14 +28,16 @@ const start = (e) => {
 
 }
 const painting = (e) => {
+   const rect = canvas.getBoundingClientRect()
+
    if (draw == true) {
-  if (e.touches) {
-      mouse.x = e.touches[0].pageX - canvas.getBoundingClientRect().left
-      mouse.y = e.touches[0].pageY - canvas.getBoundingClientRect().top
-   } else {
-      mouse.x = e.pageX - canvas.getBoundingClientRect().left
-      mouse.y = e.pageY - canvas.getBoundingClientRect().top
-   }
+      if (e.touches) {
+         mouse.x = e.touches[0].pageX - rect.left
+         mouse.y = e.touches[0].pageY - rect.top
+      } else {
+         mouse.x = e.pageX - rect.left
+         mouse.y = e.pageY - rect.top
+      }
 
       cx.strokeStyle = color
       cx.lineTo(mouse.x, mouse.y)
@@ -41,12 +45,14 @@ const painting = (e) => {
    }
 }
 const stop = (e) => {
-  if (e.touches) {
-      mouse.x = e.touches[0].pageX - canvas.getBoundingClientRect().left
-      mouse.y = e.touches[0].pageY - canvas.getBoundingClientRect().top
+   const rect = canvas.getBoundingClientRect()
+
+   if (e.touches) {
+      mouse.x = e.touches[0].pageX - rect.left
+      mouse.y = e.touches[0].pageY - rect.top
    } else {
-      mouse.x = e.pageX - canvas.getBoundingClientRect().left
-      mouse.y = e.pageY - canvas.getBoundingClientRect().top
+      mouse.x = e.pageX - rect.left
+      mouse.y = e.pageY - rect.top
    }
 
    cx.lineTo(mouse.x, mouse.y)
@@ -63,6 +69,7 @@ const save = document.querySelector('#save')
 const del = document.querySelector('#del')
 const pen = document.querySelector('#pen-color')
 const bg_color = document.querySelector('#bg-color')
+const range = document.querySelector('input[type=range]')
 
 save.addEventListener('click', () => {
    const data = canvas.toDataURL('image/png')
@@ -85,6 +92,11 @@ bg_color.addEventListener('change', e => {
    canvas.style.background = e.target.value
 })
 
+range.addEventListener('input', e => {
+   const text_range = document.querySelector('#range_text')
+   text_range.innerHTML = e.target.value
+   cx.lineWidth = e.target.value
+})
 
 // android
 const isTouch = 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch || navigator.maxTouchPoints > 0 || window.navigator.msMaxTouchPoints > 0
@@ -100,14 +112,3 @@ if (isTouch) {
       nav_btn.click()
    })
 }
-
-
-
-
-
-
-
-
-
-
-
