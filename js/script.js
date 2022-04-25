@@ -11,18 +11,29 @@ cx.canvas.width = window.innerWidth
 cx.canvas.height = window.innerHeight
 
 const start = (e) => {
-   mouse.x = e.pageX - canvas.getBoundingClientRect().left
-   mouse.y = e.pageY - canvas.getBoundingClientRect().top
+   if (e.touches) {
+      mouse.x = e.touches[0].pageX - canvas.getBoundingClientRect().left
+      mouse.y = e.touches[0].pageY - canvas.getBoundingClientRect().top
+   } else {
+      mouse.x = e.pageX - canvas.getBoundingClientRect().left
+      mouse.y = e.pageY - canvas.getBoundingClientRect().top
+   }
 
    draw = true
 
    cx.beginPath()
    cx.moveTo(mouse.x, mouse.y)
+
 }
 const painting = (e) => {
    if (draw == true) {
+  if (e.touches) {
+      mouse.x = e.touches[0].pageX - canvas.getBoundingClientRect().left
+      mouse.y = e.touches[0].pageY - canvas.getBoundingClientRect().top
+   } else {
       mouse.x = e.pageX - canvas.getBoundingClientRect().left
       mouse.y = e.pageY - canvas.getBoundingClientRect().top
+   }
 
       cx.strokeStyle = color
       cx.lineTo(mouse.x, mouse.y)
@@ -30,8 +41,13 @@ const painting = (e) => {
    }
 }
 const stop = (e) => {
-   mouse.x = e.pageX - canvas.getBoundingClientRect().left
-   mouse.y = e.pageY - canvas.getBoundingClientRect().top
+  if (e.touches) {
+      mouse.x = e.touches[0].pageX - canvas.getBoundingClientRect().left
+      mouse.y = e.touches[0].pageY - canvas.getBoundingClientRect().top
+   } else {
+      mouse.x = e.pageX - canvas.getBoundingClientRect().left
+      mouse.y = e.pageY - canvas.getBoundingClientRect().top
+   }
 
    cx.lineTo(mouse.x, mouse.y)
    cx.stroke()
@@ -68,3 +84,30 @@ pen.addEventListener('change', e => {
 bg_color.addEventListener('change', e => {
    canvas.style.background = e.target.value
 })
+
+
+// android
+const isTouch = 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch || navigator.maxTouchPoints > 0 || window.navigator.msMaxTouchPoints > 0
+
+if (isTouch) {
+   canvas.addEventListener('touchstart', start)
+   canvas.addEventListener('touchmove', painting)
+   canvas.addEventListener('touchend', stop)
+
+   const nav_btn = document.querySelector('#touch')
+
+   nav_btn.addEventListener('touchmove', () => {
+      nav_btn.click()
+   })
+}
+
+
+
+
+
+
+
+
+
+
+
